@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.avisys.cim.Customer;
 import com.avisys.cim.CustomerMobileNo;
 import com.avisys.cim.dto.CreateCustomerRequest;
+import com.avisys.cim.repository.CustomerMobileNumberRepository;
 import com.avisys.cim.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
 
@@ -19,7 +20,8 @@ public class CustomerServiceImplementation implements CustomerService{
 	private CustomerRepository customerRepoistory; // autowiring the CustomerRepository interface .
 	
 	
-	
+	@Autowired
+	private CustomerMobileNumberRepository customerMobileNumberRepository; // autowiring the CustomerMobileNumberRepository interface .
 	
 	// This method get all customers from the database using the `customerRepoistory.findAll()` method which is provided by Spring Data JPA.
 	@Override
@@ -28,16 +30,7 @@ public class CustomerServiceImplementation implements CustomerService{
 		list.forEach(x->x.getMobileNumbers().toString());
 		return list;
 	}
-	//***due to change in Customer entity this cannot work in this Requirements but we are using it in future. 
-	// This method searches for customers in the database by their first name, last name, and mobile number using the `customerRepoistory.findByFirstNameAndLastNameAndMobileNumber()` method provided by Spring Data JPA.
-	// If the method does not find any matching customers, it throws an exception using the `orElseThrow()` method.
-//	@Override
-//	public List<Customer> getByFirstNameAndLastNameAndMobileNumber(String firstName, String lastName,
-//			String mobileNumber) {
-//		return customerRepoistory.findByFirstNameAndLastNameAndMobileNumber(firstName, lastName, mobileNumber).orElseThrow();
-//		
-//	}
-	
+
 	
 	//*** This method creates a new customer and CustomerMobileNos to the database using the method "save" provided by Spring Data JPA.
 	//one customer can have multiple mobile no objects
@@ -59,6 +52,16 @@ public class CustomerServiceImplementation implements CustomerService{
 		}
 		cust.setMobileNumbers(mobileNumbers);
 		customerRepoistory.save(cust);
+	}
+
+	//**this method deletes the customer for that mobile no
+	//get the object of CustomerMobileNo by method findbyMobileNumber then delete by the id by extracting customerId from the "CustomerMobileNo"
+	//and finally returns the success message.
+	@Override
+	public String deleteCustomerByMobileNo(String mobileno) {
+		CustomerMobileNo customerMobileNo= customerMobileNumberRepository.findByMobileNumber(mobileno);
+		customerRepoistory.deleteById(customerMobileNo.getCustomer().getId());
+		return "Deleted Successfully...!!!";
 	}
 
 }

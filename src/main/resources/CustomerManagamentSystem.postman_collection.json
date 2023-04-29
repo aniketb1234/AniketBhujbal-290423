@@ -14,19 +14,6 @@
 			},
 			"response": [
 				{
-					"firstName": "aniket",
-					"lastName": "Bhujbal",
-					"mobileNumbers": [
-						{
-							"mobileNumber": "123123123"
-						},
-						{
-							"mobileNumber": "666666666"
-						}
-					],
-					"id": -39
-				},
-				{
 					"firstName": "Alan",
 					"lastName": "Smith",
 					"mobileNumbers": [
@@ -47,16 +34,6 @@
 					"id": 2
 				},
 				{
-					"firstName": "John",
-					"lastName": "Smith",
-					"mobileNumbers": [
-						{
-							"mobileNumber": "9111111113"
-						}
-					],
-					"id": 3
-				},
-				{
 					"firstName": "Kathy",
 					"lastName": "Sierra",
 					"mobileNumbers": [
@@ -72,33 +49,25 @@
 			]
 		},
 		{
-			"name": "CreateCustomer",
+			"name": "DELETEBYMOBILENUMBER",
 			"request": {
-				"method": "Post",
+				"method": "DELETE",
 				"header": [],
-				"url": {
-					"raw": "{{URL}}/customer/create",
-					"host": [
-						"{{URL}}"
-					]
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    \r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{URL}}/customer/deleteByMobileno?mobileno=9111111113"
 			},
-			"Body": 
-			{
-  
-				"firstName":"aniket",
-				"lastName":"Bhujbal",
-				"mobileNumbers":[
-						"123123123",
-						"666666666"
-				]
-			}
-		},
-			"response": [
-				"Customer created successfully."
-			]
+			"response": "Deleted Successfully...!!!"
 		}
-	
 	],
+
 	"event": [
 		{
 			"listen": "prerequest",
