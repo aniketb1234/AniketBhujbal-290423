@@ -1,10 +1,16 @@
 package com.avisys.cim;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,8 +18,9 @@ import jakarta.persistence.Table;
 public class Customer {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "customer_Id", updatable = false, nullable = false)
+	private Long customerId;
 
 	@Column(name = "FIRST_NAME", nullable = false)
 	private String firstName;
@@ -21,16 +28,19 @@ public class Customer {
 	@Column(name = "LAST_NAME", nullable = false)
 	private String lastName;
 
-	@Column(name = "MOBILE_NUMBER", unique = true, nullable = false)
-	private String mobileNumber;
+//	@Column(name = "MOBILE_NUMBER", unique = true, nullable = false)
+//	private String mobileNumber;
+	
+	   @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	    private List<CustomerMobileNo> mobileNumbers = new ArrayList<>();
 
 	public Long getId() {
-		return id;
+		return customerId;
 	}
 	
 
 	public void setId(Long id) {
-		this.id = id;
+		this.customerId = id;
 	}
 
 	public String getFirstName() {
@@ -49,19 +59,38 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
-	public String getMobileNumber() {
-		return mobileNumber;
+
+	public List<CustomerMobileNo> getMobileNumbers() {
+		return mobileNumbers;
 	}
 
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
+
+	public void setMobileNumbers(List<CustomerMobileNo> mobileNumbers) {
+		this.mobileNumbers = mobileNumbers;
 	}
+
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", mobileNumber="
-				+ mobileNumber + "]";
+		return "Customer [id=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", mobileNumbers="
+				+ mobileNumbers + "]";
 	}
+
+//	public String getMobileNumber() {
+//		return mobileNumber;
+//	}
+//
+//	public void setMobileNumber(String mobileNumber) {
+//		this.mobileNumber = mobileNumber;
+//	}
+	
+
+//	@Override
+//	public String toString() {
+//		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", mobileNumber="
+//				+ mobileNumber + "]";
+//	}
+	
 
 
 

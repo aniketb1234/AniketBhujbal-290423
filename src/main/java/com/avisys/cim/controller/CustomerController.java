@@ -1,5 +1,6 @@
 package com.avisys.cim.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.avisys.cim.Customer;
 import com.avisys.cim.service.CustomerService;
 
@@ -27,25 +27,30 @@ public class CustomerController {
 	// Returns all the customers from database using JpaRepository  inbuilt  findAll method
 	@GetMapping("/getall")
 	public ResponseEntity<List<Customer>> getAll() {
+		System.out.println("inside controller");
 		List<Customer> list= customerService.getAllCustomers();
 		return ResponseEntity.ok(list);
 	}
-
+	
+	//***due to change in Customer entity this cannot work in this Requirements but we are using it in future. 
 	// Returns a list of customers filtered by the given first name, last name, and mobile number.
-    @GetMapping("/get")
-    public ResponseEntity<List<Customer>> getCustomers(@RequestParam(required = false) String firstName,
-                                        @RequestParam(required = false) String lastName,
-                                        @RequestParam(required = false) String mobileNumber) {
+//    @GetMapping("/get")
+//    public ResponseEntity<List<Customer>> getCustomers(@RequestParam(required = false) String firstName,
+//                                        @RequestParam(required = false) String lastName,
+//                                        @RequestParam(required = false) String mobileNumber) {
+//
+//    	 List<Customer>	list= customerService.getByFirstNameAndLastNameAndMobileNumber(firstName, lastName, mobileNumber);
+//    	
+//    	return ResponseEntity.ok(list);
+//    }
+//    
 
-    	 List<Customer>	list= customerService.getByFirstNameAndLastNameAndMobileNumber(firstName, lastName, mobileNumber);
-    	
-    	return ResponseEntity.ok(list);
-    }
-    
+	
     // Creates a new customer in the database.
     @PostMapping("/create")
-    public ResponseEntity<String> createCustomer(@RequestBody Customer customer) {
-        customerService.createCustomer(customer);
+    public ResponseEntity<String> createCustomer(@RequestBody Customer  customer) {
+       customerService.createCustomer(customer);
+    	System.out.println(customer.toString());
         return ResponseEntity.ok("Customer created successfully.");
     }
 }

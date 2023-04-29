@@ -14,132 +14,48 @@
 			},
 			"response": [
 				{
-					"id": 1,
 					"firstName": "Alan",
 					"lastName": "Smith",
-					"mobileNumber": "9111111111"
+					"mobileNumbers": [
+						{
+							"mobileNumber": "9111111111"
+						}
+					],
+					"id": 1
 				},
 				{
-					"id": 2,
 					"firstName": "Joe",
 					"lastName": "Turing",
-					"mobileNumber": "9111111112"
+					"mobileNumbers": [
+						{
+							"mobileNumber": "9111111112"
+						}
+					],
+					"id": 2
 				},
 				{
-					"id": 3,
 					"firstName": "John",
 					"lastName": "Smith",
-					"mobileNumber": "9111111113"
+					"mobileNumbers": [
+						{
+							"mobileNumber": "9111111113"
+						}
+					],
+					"id": 3
 				},
 				{
-					"id": 4,
 					"firstName": "Kathy",
 					"lastName": "Sierra",
-					"mobileNumber": "9111111114"
-				}
-			]
-		},
-		{
-			"name": "GETBYFNAMELNAMEMOBILENO",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/customer/get?firstName=jo&lastName=T",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"customer",
-						"get"
-					],
-					"query": [
+					"mobileNumbers": [
 						{
-							"key": "firstName",
-							"value": "jo"
+							"mobileNumber": "9111111114"
 						},
 						{
-							"key": "lastName",
-							"value": "T"
+							"mobileNumber": "9111111115"
 						}
-					]
-				}
-			},
-			"response": [
-				{
-					"id": 2,
-					"firstName": "Joe",
-					"lastName": "Turing",
-					"mobileNumber": "9111111112"
-				},
-				{
-					"id": 3,
-					"firstName": "John",
-					"lastName": "Smith",
-					"mobileNumber": "9111111113"
-				}
-			]
-		},
-		{
-			"name": "GETBYMOBILENO",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/customer/get?firstName=&lastName=&mobileNumber=9111111112",
-					"host": [
-						"{{URL}}"
 					],
-					"path": [
-						"customer",
-						"get"
-					],
-					"query": [
-						{
-							"key": "firstName",
-							"value": ""
-						},
-						{
-							"key": "lastName",
-							"value": ""
-						},
-						{
-							"key": "mobileNumber",
-							"value": "9111111112"
-						}
-					]
+					"id": 4
 				}
-				
-			},
-			"response": [ {
-				"id": 2,
-				"firstName": "Joe",
-				"lastName": "Turing",
-				"mobileNumber": "9111111112"
-			}
-		]
-		},
-		{
-			"name": "CreateCustomer",
-			"request": {
-				"method": "Post",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/customer/create",
-					"host": [
-						"{{URL}}"
-					]
-			},
-			"Body": 
-			{
-  
-				"firstName":"aniket",
-				"lastName":"Bhujbal",
-				"mobileNumber":"555"
-			}
-		},
-			"response": [
-				"Customer created successfully."
 			]
 		}
 	

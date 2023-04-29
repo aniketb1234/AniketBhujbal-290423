@@ -19,16 +19,19 @@ public class CustomerServiceImplementation implements CustomerService{
 	@Override
 	public List<Customer> getAllCustomers() {
 		List<Customer> list=customerRepoistory.findAll();
+		list.forEach(x->x.getMobileNumbers().toString());
 		return list;
 	}
+	//***due to change in Customer entity this cannot work in this Requirements but we are using it in future. 
 	// This method searches for customers in the database by their first name, last name, and mobile number using the `customerRepoistory.findByFirstNameAndLastNameAndMobileNumber()` method provided by Spring Data JPA.
 	// If the method does not find any matching customers, it throws an exception using the `orElseThrow()` method.
-	@Override
-	public List<Customer> getByFirstNameAndLastNameAndMobileNumber(String firstName, String lastName,
-			String mobileNumber) {
-		return customerRepoistory.findByFirstNameAndLastNameAndMobileNumber(firstName, lastName, mobileNumber).orElseThrow();
-		
-	}
+//	@Override
+//	public List<Customer> getByFirstNameAndLastNameAndMobileNumber(String firstName, String lastName,
+//			String mobileNumber) {
+//		return customerRepoistory.findByFirstNameAndLastNameAndMobileNumber(firstName, lastName, mobileNumber).orElseThrow();
+//		
+//	}
+	
 
 	// This method creates a new customer to the database using the method "save" provided by Spring Data JPA.
 	@Override
