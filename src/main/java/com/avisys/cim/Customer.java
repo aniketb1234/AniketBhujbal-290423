@@ -9,7 +9,6 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "CUSTOMER")
-
 public class Customer {
 
 	@Id
@@ -28,6 +27,7 @@ public class Customer {
 	public Long getId() {
 		return id;
 	}
+	
 
 	public void setId(Long id) {
 		this.id = id;
@@ -56,5 +56,13 @@ public class Customer {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", mobileNumber="
+				+ mobileNumber + "]";
+	}
+
+
 
 }

@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "f61d7e80-80f8-43be-9400-4f203b6ed90e",
-		"name": "CustomerManagamentSystem",
+		"name": "customermanagamentSystem",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "25314069"
 	},
@@ -109,6 +109,7 @@
 						}
 					]
 				}
+				
 			},
 			"response": [ {
 				"id": 2,
@@ -117,7 +118,31 @@
 				"mobileNumber": "9111111112"
 			}
 		]
+		},
+		{
+			"name": "CreateCustomer",
+			"request": {
+				"method": "Post",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/customer/create",
+					"host": [
+						"{{URL}}"
+					]
+			},
+			"Body": 
+			{
+  
+				"firstName":"aniket",
+				"lastName":"Bhujbal",
+				"mobileNumber":"555"
+			}
+		},
+			"response": [
+				"Customer created successfully."
+			]
 		}
+	
 	],
 	"event": [
 		{
@@ -144,6 +169,6 @@
 			"key": "URL",
 			"value": "http://localhost:8080",
 			"type": "string"
-		}
+		}	
 	]
 }

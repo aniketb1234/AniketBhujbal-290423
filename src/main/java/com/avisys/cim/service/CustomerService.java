@@ -11,4 +11,7 @@ public interface CustomerService {
 	List<Customer> getByFirstNameAndLastNameAndMobileNumber(String firstName, String lastName, String mobileNumber);
 
 
+	void createCustomer(Customer customer);
+
+
 }
