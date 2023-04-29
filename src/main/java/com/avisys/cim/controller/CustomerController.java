@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.avisys.cim.Customer;
+import com.avisys.cim.dto.CreateCustomerRequest;
 import com.avisys.cim.service.CustomerService;
 
 
@@ -46,11 +47,12 @@ public class CustomerController {
 //    
 
 	
-    // Creates a new customer in the database.
+	
+    //*** Creates a new customer in the database.
+	//here "CreateCustomerRequest" it is DTO which binds the request object
     @PostMapping("/create")
-    public ResponseEntity<String> createCustomer(@RequestBody Customer  customer) {
+    public ResponseEntity<String> createCustomer(@RequestBody CreateCustomerRequest customer) {
        customerService.createCustomer(customer);
-    	System.out.println(customer.toString());
         return ResponseEntity.ok("Customer created successfully.");
     }
 }

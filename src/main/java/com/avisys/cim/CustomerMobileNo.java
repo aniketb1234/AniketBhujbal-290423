@@ -15,11 +15,11 @@ import jakarta.persistence.Table;
 public class CustomerMobileNo {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
     @JsonIgnore
 	private Long id;
 
-	@Column(name = "Mobile_Number", nullable = false)
+	@Column(name = "Mobile_Number", nullable = false,unique = true)
 	private String mobileNumber;
 
 	@ManyToOne
@@ -42,6 +42,19 @@ public class CustomerMobileNo {
 
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
+	}
+
+	public CustomerMobileNo(String mobileNumber, Customer customer) {
+		
+		this.mobileNumber = mobileNumber;
+		this.customer = customer;
+	}
+	
+
+
+
+	public CustomerMobileNo() {
+		
 	}
 
 }

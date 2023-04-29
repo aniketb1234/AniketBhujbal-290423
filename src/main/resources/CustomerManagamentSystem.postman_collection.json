@@ -14,6 +14,19 @@
 			},
 			"response": [
 				{
+					"firstName": "aniket",
+					"lastName": "Bhujbal",
+					"mobileNumbers": [
+						{
+							"mobileNumber": "123123123"
+						},
+						{
+							"mobileNumber": "666666666"
+						}
+					],
+					"id": -39
+				},
+				{
 					"firstName": "Alan",
 					"lastName": "Smith",
 					"mobileNumbers": [
@@ -56,6 +69,32 @@
 					],
 					"id": 4
 				}
+			]
+		},
+		{
+			"name": "CreateCustomer",
+			"request": {
+				"method": "Post",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/customer/create",
+					"host": [
+						"{{URL}}"
+					]
+			},
+			"Body": 
+			{
+  
+				"firstName":"aniket",
+				"lastName":"Bhujbal",
+				"mobileNumbers":[
+						"123123123",
+						"666666666"
+				]
+			}
+		},
+			"response": [
+				"Customer created successfully."
 			]
 		}
 	

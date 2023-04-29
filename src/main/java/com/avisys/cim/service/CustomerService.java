@@ -3,6 +3,7 @@ package com.avisys.cim.service;
 import java.util.List;
 
 import com.avisys.cim.Customer;
+import com.avisys.cim.dto.CreateCustomerRequest;
 
 public interface CustomerService {
 
@@ -12,7 +13,7 @@ public interface CustomerService {
 //	List<Customer> getByFirstNameAndLastNameAndMobileNumber(String firstName, String lastName, String mobileNumber);
 
 
-	void createCustomer(Customer customer);
+	void createCustomer(CreateCustomerRequest customer);
 
 
 }

@@ -18,8 +18,8 @@ import jakarta.persistence.Table;
 public class Customer {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "customer_Id", updatable = false, nullable = false)
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "customer_Id", updatable = false)
 	private Long customerId;
 
 	@Column(name = "FIRST_NAME", nullable = false)
@@ -27,9 +27,6 @@ public class Customer {
 
 	@Column(name = "LAST_NAME", nullable = false)
 	private String lastName;
-
-//	@Column(name = "MOBILE_NUMBER", unique = true, nullable = false)
-//	private String mobileNumber;
 	
 	   @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	    private List<CustomerMobileNo> mobileNumbers = new ArrayList<>();
@@ -76,20 +73,10 @@ public class Customer {
 				+ mobileNumbers + "]";
 	}
 
-//	public String getMobileNumber() {
-//		return mobileNumber;
-//	}
-//
-//	public void setMobileNumber(String mobileNumber) {
-//		this.mobileNumber = mobileNumber;
-//	}
+
 	
 
-//	@Override
-//	public String toString() {
-//		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", mobileNumber="
-//				+ mobileNumber + "]";
-//	}
+
 	
 
 
