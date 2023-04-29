@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "f61d7e80-80f8-43be-9400-4f203b6ed90e",
+		"name": "CustomerManagamentSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25314069"
+	},
+	"item": [
+		{
+			"name": "GETALL",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"id": 1,
+					"firstName": "Alan",
+					"lastName": "Smith",
+					"mobileNumber": "9111111111"
+				},
+				{
+					"id": 2,
+					"firstName": "Joe",
+					"lastName": "Turing",
+					"mobileNumber": "9111111112"
+				},
+				{
+					"id": 3,
+					"firstName": "John",
+					"lastName": "Smith",
+					"mobileNumber": "9111111113"
+				},
+				{
+					"id": 4,
+					"firstName": "Kathy",
+					"lastName": "Sierra",
+					"mobileNumber": "9111111114"
+				}
+			]
+		},
+		{
+			"name": "GETBYFNAMELNAMEMOBILENO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/customer/get?firstName=jo&lastName=T",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"customer",
+						"get"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "jo"
+						},
+						{
+							"key": "lastName",
+							"value": "T"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": 2,
+					"firstName": "Joe",
+					"lastName": "Turing",
+					"mobileNumber": "9111111112"
+				},
+				{
+					"id": 3,
+					"firstName": "John",
+					"lastName": "Smith",
+					"mobileNumber": "9111111113"
+				}
+			]
+		},
+		{
+			"name": "GETBYMOBILENO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/customer/get?firstName=&lastName=&mobileNumber=9111111112",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"customer",
+						"get"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": ""
+						},
+						{
+							"key": "lastName",
+							"value": ""
+						},
+						{
+							"key": "mobileNumber",
+							"value": "9111111112"
+						}
+					]
+				}
+			},
+			"response": [ {
+				"id": 2,
+				"firstName": "Joe",
+				"lastName": "Turing",
+				"mobileNumber": "9111111112"
+			}
+		]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
