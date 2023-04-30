@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,7 +37,15 @@ public class CustomerController {
 		return ResponseEntity.ok(customerService.deleteCustomerByMobileNo(mobileno));
 	}
 	
-
+		//**This method updates the mobile no for the customer whoes mobileNo is match with the existing mobile no
+		@PutMapping("/updateMobileno")
+		public ResponseEntity<?> updateMobileNumber(@RequestParam("existing") String existing,
+														@RequestParam("new") String newMobileNo) {
+			
+			return ResponseEntity.ok(customerService.UpdateCustomerMobileno(existing,newMobileNo));
+			
+		}
+		
 	
 	
     //*** Creates a new customer in the database.

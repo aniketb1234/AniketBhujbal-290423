@@ -18,7 +18,7 @@
 					"lastName": "Smith",
 					"mobileNumbers": [
 						{
-							"mobileNumber": "9111111111"
+							"mobileNumber": "55555555"
 						}
 					],
 					"id": 1
@@ -32,6 +32,16 @@
 						}
 					],
 					"id": 2
+				},
+				{
+					"firstName": "John",
+					"lastName": "Smith",
+					"mobileNumbers": [
+						{
+							"mobileNumber": "9111111113"
+						}
+					],
+					"id": 3
 				},
 				{
 					"firstName": "Kathy",
@@ -49,22 +59,14 @@
 			]
 		},
 		{
-			"name": "DELETEBYMOBILENUMBER",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "\r\n    \r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{URL}}/customer/deleteByMobileno?mobileno=9111111113"
-			},
-			"response": "Deleted Successfully...!!!"
+			"name": "UpdateMobileNumber",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": "{{URL}}/customer/updateMobileno?existing=9111111111&new=55555555"
+
+					},
+					"response": "Updated Successfully..!!!!"
 		}
 	],
 

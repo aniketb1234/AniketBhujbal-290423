@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.avisys.cim.Customer;
 import com.avisys.cim.CustomerMobileNo;
 import com.avisys.cim.dto.CreateCustomerRequest;
+import com.avisys.cim.dto.UpdateMobilenoRequest;
 import com.avisys.cim.repository.CustomerMobileNumberRepository;
 import com.avisys.cim.repository.CustomerRepository;
 import jakarta.transaction.Transactional;
@@ -54,6 +55,8 @@ public class CustomerServiceImplementation implements CustomerService{
 		customerRepoistory.save(cust);
 	}
 
+	
+	
 	//**this method deletes the customer for that mobile no
 	//get the object of CustomerMobileNo by method findbyMobileNumber then delete by the id by extracting customerId from the "CustomerMobileNo"
 	//and finally returns the success message.
@@ -62,6 +65,23 @@ public class CustomerServiceImplementation implements CustomerService{
 		CustomerMobileNo customerMobileNo= customerMobileNumberRepository.findByMobileNumber(mobileno);
 		customerRepoistory.deleteById(customerMobileNo.getCustomer().getId());
 		return "Deleted Successfully...!!!";
+	}
+
+ //***This method updates the mobile no for the customer whoes mobile Number is match with the existing mobile no
+	//if successfully update it returns it.
+	@Override
+	public String UpdateCustomerMobileno(String existingMobileNumber,String NewMobileNumber) {
+		//getting the "CustomerMobileNo" from existingMobile Number which have mobile number and customer id
+		CustomerMobileNo customerMobileNo= customerMobileNumberRepository.findByMobileNumber(existingMobileNumber);
+		//null checking if the mobile number is present for the customer or not
+		if(customerMobileNo==null) {
+			return "Customer is not present for the existing mobile number";
+		}
+		//setting new mobile Number in the object
+		customerMobileNo.setMobileNumber(NewMobileNumber);
+		//save method will first check if the id is present it will update in the table
+		customerMobileNumberRepository.save(customerMobileNo);
+		return "Updated Successfully..!!!!";
 	}
 
 }
